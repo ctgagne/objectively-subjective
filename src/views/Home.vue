@@ -9,7 +9,7 @@
         </h1>
         <div class="button">Episode Guide</div>
       </div>
-      <img alt="OS logo" src="../assets/objectively-subjective.jpg" />
+      <img alt="OS logo" src="@/assets/objectively-subjective.jpg" />
     </div>
     <div class="player">
       <div class="listen">
@@ -65,19 +65,21 @@ h1 {
   cursor: pointer;
   width: max-content;
   padding: 0.5rem 1rem;
+  font-weight: 900;
   font-size: 1.5rem;
   margin-top: -1rem;
   margin-left: 1rem;
-  background-color: var(--light-text);
+  background-color: var(--dark-background);
   color: var(--dark-text);
   border: 1px solid var(--dark-text);
-  border-radius: 2rem;
+  border-radius: 1rem;
   box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.25);
-  transition: all 100ms ease;
+  transition: all 300ms ease;
 }
 
 .button:hover {
-  box-shadow: -5px 14px 8px rgba(0, 0, 0, 0.5);
+  transform: translateX(5px) translateY(-5px);
+  box-shadow: -5px 14px 8px rgba(0, 0, 0, 0.7);
 }
 
 .home-text {
