@@ -7,6 +7,7 @@
           A podcast where we <span class="highlight">objectively</span> give you
           our <span class="highlight">subjective </span><br /><u>Top 5 lists</u>
         </h1>
+        <div class="button">Episode Guide</div>
       </div>
       <img alt="OS logo" src="../assets/objectively-subjective.jpg" />
     </div>
@@ -58,6 +59,25 @@ h1 {
 
 .highlight {
   color: var(--light-text);
+}
+
+.button {
+  cursor: pointer;
+  width: max-content;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  margin-top: -1rem;
+  margin-left: 1rem;
+  background-color: var(--light-text);
+  color: var(--dark-text);
+  border: 1px solid var(--dark-text);
+  border-radius: 2rem;
+  box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.25);
+  transition: all 100ms ease;
+}
+
+.button:hover {
+  box-shadow: -5px 14px 8px rgba(0, 0, 0, 0.5);
 }
 
 .home-text {
