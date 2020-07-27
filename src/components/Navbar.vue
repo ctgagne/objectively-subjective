@@ -1,12 +1,5 @@
 <template>
   <div class="nav">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path
-        fill="#ccc9a8"
-        fill-opacity="1"
-        d="m0,66.84081l60,11.14014c60,11.14014 180,33.42041 300,25.97044c120,-7.17146 240,-44.76942 360,-66.84081c120,-22.48915 240,-29.45173 360,-25.97044c120,3.48129 240,18.79898 300,25.97044l60,7.44997l0,-44.56054l-60,0c-60,0 -180,0 -300,0c-120,0 -240,0 -360,0c-120,0 -240,0 -360,0c-120,0 -240,0 -300,0l-60,0l0,66.84081l0,-0.00001z"
-      ></path>
-    </svg>
     <div id="menu">
       <ul>
         <li>
@@ -49,6 +42,13 @@
         </span>
       </ul>
     </div>
+    <div class="mobile-nav">
+      <div class="circle">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+        </svg>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -59,25 +59,20 @@ export default {};
 <style scoped>
 .nav {
   display: flex;
-  height: 100px;
-  padding-bottom: 2rem;
+  position: relative;
+  min-height: 150px;
   justify-content: center;
-}
-
-.nav svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  background-image: url("~@/assets/navbarsvg.svg");
+  background-size: 100vw;
 }
 
 .nav ul {
   display: flex;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   list-style-type: none;
+  max-height: 80%;
   margin: 0;
   padding: 0;
-  padding-top: 1rem;
 }
 
 li {
@@ -89,13 +84,35 @@ li {
 #menu {
   display: flex;
   width: 1440px;
-  margin: auto 0;
+  min-height: 150px;
+  margin: 0;
+  padding: 0;
+  justify-items: center;
+}
+
+@media (max-width: 1500px) {
+  #menu {
+    width: 1350px;
+  }
+  .nav ul {
+    max-height: 65%;
+  }
+}
+
+@media (max-width: 1233px) {
+  #menu {
+    width: 1200px;
+  }
+  .nav ul {
+    max-height: 45%;
+  }
 }
 
 #menu a {
   font-weight: bold;
   color: var(--dark-text);
   text-decoration: none;
+  margin: 0;
 }
 #menu a:hover {
   font-weight: bold;
@@ -108,15 +125,52 @@ li {
 }
 
 #menu li svg {
-  position: relative;
-  width: 40px;
+  max-width: 40px;
   height: 40px;
 }
 .menu-icons {
   display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .menu-icons a:hover {
   fill: var(--primary-color);
+}
+
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: -60px;
+  width: 150px;
+  height: 150px;
+  background-color: var(--light-text);
+  border-radius: 50%;
+  justify-content: center;
+}
+
+.mobile-nav svg {
+  width: 40px;
+  height: 40px;
+  margin: 40px 0 0 40px;
+}
+
+@media (max-width: 1128px) {
+  .nav {
+    background-image: none;
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 1128px) {
+  #menu {
+    display: none;
+  }
+  .mobile-nav {
+    display: flex;
+  }
 }
 </style>

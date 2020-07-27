@@ -7,9 +7,14 @@
           A podcast where we <span class="highlight">objectively</span> give you
           our <span class="highlight">subjective </span><br /><u>Top 5 lists</u>
         </h1>
-        <div class="button">Episode Guide</div>
+        <div class="buttons">
+          <div class="button">Subscribe</div>
+          <div class="button">Episode Guide</div>
+        </div>
       </div>
-      <img alt="OS logo" src="@/assets/objectively-subjective.jpg" />
+      <div class="image-container">
+        <img alt="OS logo" src="@/assets/objectively-subjective.jpg" />
+      </div>
     </div>
     <div class="player">
       <div class="listen">
@@ -61,6 +66,10 @@ h1 {
   color: var(--light-text);
 }
 
+.buttons {
+  display: flex;
+}
+
 .button {
   cursor: pointer;
   width: max-content;
@@ -86,11 +95,16 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 800px;
   padding-top: 2rem;
+  padding-left: 1rem;
+  z-index: 1;
 }
 .home img {
   width: 650px;
   height: 650px;
+  margin-left: -3rem;
+  padding-right: 0.5rem;
 }
 
 .player {
@@ -109,5 +123,36 @@ h1 {
 
 iframe {
   padding: 0 1rem;
+}
+
+@media (max-width: 1370px) {
+  .home img {
+    margin-left: -7rem;
+  }
+}
+
+@media (max-width: 1243px) {
+  .home img {
+    margin-left: -10rem;
+  }
+}
+
+@media (max-width: 1197px) {
+  .home img {
+    margin-left: -10rem;
+  }
+  .player {
+    margin-top: auto;
+  }
+}
+
+@media (max-width: 1061px) {
+  .main-section {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .home img {
+    margin: 0;
+  }
 }
 </style>
