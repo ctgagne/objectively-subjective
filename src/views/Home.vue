@@ -158,7 +158,9 @@ iframe {
   .home-text {
     margin: 0 auto;
     padding: 1rem;
-    font-size: 16px;
+  }
+  .title {
+    font-size: 1.5rem;
   }
   h1 {
     font-size: 3rem;
@@ -185,6 +187,12 @@ iframe {
   }
   .buttons :nth-child(2) {
     margin-top: 1rem;
+  }
+  h1 {
+    font-size: 2.8rem;
+  }
+  .title {
+    font-size: 1rem;
   }
 }
 </style>
