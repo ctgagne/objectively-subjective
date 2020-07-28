@@ -43,17 +43,42 @@
       </ul>
     </div>
     <div class="mobile-nav">
-      <div class="circle">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-        </svg>
-      </div>
+      <transition name="appear">
+        <div
+          class="circle"
+          @click="$store.state.showSidebar = !$store.state.showSidebar"
+          v-if="!$store.state.showSidebar"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </div>
+      </transition>
+      <transition name="appear">
+        <div
+          class="hamburger"
+          @click="$store.state.showSidebar = !$store.state.showSidebar"
+          v-if="$store.state.showSidebar"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path
+              d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"
+            />
+          </svg>
+        </div>
+      </transition>
     </div>
+    <Sidebar />
   </div>
 </template>
 
 <script>
-export default {};
+import Sidebar from "@/components/Sidebar.vue";
+export default {
+  components: {
+    Sidebar
+  }
+};
 </script>
 
 <style scoped>
@@ -141,21 +166,27 @@ li {
 .mobile-nav {
   display: none;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   margin: -60px;
   width: 150px;
   height: 150px;
   background-color: var(--light-text);
-  border-radius: 50%;
+  clip-path: circle();
   justify-content: center;
+  z-index: 4;
+}
+
+.circle,
+.hamburger {
+  z-index: 6;
 }
 
 .mobile-nav svg {
+  position: absolute;
   width: 40px;
   height: 40px;
-  margin: 40px 0 0 40px;
 }
 
 @media (max-width: 1128px) {
@@ -172,5 +203,15 @@ li {
   .mobile-nav {
     display: flex;
   }
+}
+
+.appear-enter-active,
+.appear-leave-active {
+  transition: opacity 0.6s ease-out;
+}
+
+.appear-enter,
+.appear-leave-to {
+  opacity: 0;
 }
 </style>

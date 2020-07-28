@@ -55,7 +55,7 @@ export default {
 
 h1 {
   font-family: "Titan One", Arial, Helvetica, sans-serif;
-  font-size: 72px;
+  font-size: 4.5rem;
   text-shadow: 0px 7px 4px rgba(0, 0, 0, 0.25);
   text-align: left;
   margin-top: 0;
@@ -150,9 +150,41 @@ iframe {
   .main-section {
     flex-wrap: wrap;
     justify-content: center;
+    margin: 0 auto;
   }
   .home img {
-    margin: 0;
+    margin: auto;
+  }
+  .home-text {
+    margin: 0 auto;
+    padding: 1rem;
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  .player p {
+    margin-top: -0.5rem;
+  }
+}
+
+@media (max-width: 570px) {
+  .home img {
+    margin: auto;
+    max-width: 350px;
+    max-height: 350px;
+  }
+  .buttons {
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .button {
+    margin: auto;
+  }
+  .buttons :nth-child(2) {
+    margin-top: 1rem;
   }
 }
 </style>
