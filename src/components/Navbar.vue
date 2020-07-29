@@ -134,7 +134,7 @@ li {
 }
 
 #menu a {
-  font-weight: bold;
+  font-weight: 900;
   color: var(--dark-text);
   text-decoration: none;
   margin: 0;

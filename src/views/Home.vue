@@ -22,11 +22,11 @@
       </div>
       <iframe
         height="150px"
-        width="96%"
+        width="95%"
         frameborder="no"
         scrolling="no"
         seamless
-        src="https://player.simplecast.com/b048daef-0db1-4dc0-869a-867c70b62139?dark=true"
+        src="https://player.simplecast.com/3ecc67bc-fafa-465b-b39a-f2be91ef8ac7?dark=true"
       ></iframe>
     </div>
   </div>
@@ -82,7 +82,7 @@ h1 {
   color: var(--dark-text);
   border: 1px solid var(--dark-text);
   border-radius: 1rem;
-  box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: -3px 7px 4px rgba(0, 0, 0, 0.25);
   transition: all 300ms ease;
 }
 
@@ -183,7 +183,9 @@ iframe {
     margin: 0 auto;
   }
   .button {
+    min-width: 175px;
     margin: auto;
+    font-size: 1.5rem;
   }
   .buttons :nth-child(2) {
     margin-top: 1rem;
@@ -193,6 +195,14 @@ iframe {
   }
   .title {
     font-size: 1rem;
+  }
+  .player {
+    margin: 0 auto;
+    padding: 1rem 0;
+  }
+  iframe {
+    margin: 0 auto;
+    padding: 0;
   }
 }
 </style>
