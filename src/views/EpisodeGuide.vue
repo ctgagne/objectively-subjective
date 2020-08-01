@@ -7,38 +7,64 @@
             <img alt="OS logo" src="@/assets/objectively-subjective.jpg" />
           </div>
           <div class="player-controls">
-            <div
-              class="player-controls__item -favorite"
-              :class="{ active: currentTrack.favorited }"
-              @click="favorite"
-            >
-              <svg class="icon">
-                <use xlink:href="#icon-heart-o"></use>
-              </svg>
-            </div>
             <a
               :href="currentTrack.url"
               target="_blank"
               class="player-controls__item"
             >
-              <svg class="icon">
-                <use xlink:href="#icon-link"></use>
+              <svg
+                class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+              >
+                <g fill="currentcolor" fill-rule="evenodd">
+                  <path d="M0 48h48V0H0v48zm3.2-3.2h41.6V3.2H3.2v41.6z" />
+                  <path
+                    d="M9.6 9.6v28.8h28.8zM36.137 29.965L18.035 11.863 20.298 9.6 38.4 27.702zM36.137 20.914l-9.05-9.05 2.262-2.265 9.05 9.052z"
+                  />
+                </g>
               </svg>
             </a>
             <div class="player-controls__item" @click="prevTrack">
-              <svg class="icon">
-                <use xlink:href="#icon-prev"></use>
+              <svg
+                class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M4 5h3v10H4V5zm12 0v10l-9-5 9-5z" />
               </svg>
             </div>
             <div class="player-controls__item" @click="nextTrack">
-              <svg class="icon">
-                <use xlink:href="#icon-next"></use>
+              <svg
+                class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M13 5h3v10h-3V5zM4 5l9 5-9 5V5z" />
               </svg>
             </div>
-            <div class="player-controls__item -xl js-play" @click="play">
-              <svg class="icon">
-                <use xlink:href="#icon-pause" v-if="isTimerPlaying"></use>
-                <use xlink:href="#icon-play" v-else></use>
+            <div class="player-controls__item -xl" @click="play">
+              <svg
+                class="icon-play"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                v-if="!isTimerPlaying"
+              >
+                <path
+                  d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM7 6l8 4-8 4V6z"
+                />
+              </svg>
+              <svg
+                class="icon-play"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                v-else
+              >
+                <path
+                  d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM7 6h2v8H7V6zm4 0h2v8h-2V6z"
+                />
               </svg>
             </div>
           </div>
@@ -62,6 +88,12 @@
     </div>
     <!-- Podcast List -->
     <div class="podcast-list-container">
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path
+          d="M16 17a3 3 0 0 1-3 3h-2a3 3 0 0 1 0-6h2a3 3 0 0 1 1 .17V1l6-1v4l-4 .67V17zM0 3h12v2H0V3zm0 4h12v2H0V7zm0 4h12v2H0v-2zm0 4h6v2H0v-2z"
+        />
+      </svg> -->
+      Playlist
       <ul class="podcast-list">
         <li
           v-for="(track, index) in tracks"
@@ -85,80 +117,6 @@
         </li>
       </ul>
     </div>
-
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      hidden
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-    >
-      <defs>
-        <symbol id="icon-heart-o" width="30px" viewBox="0 0 20 20">
-          <title>icon-heart-o</title>
-          <path
-            d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z"
-          />
-        </symbol>
-        <symbol id="icon-heart" viewBox="0 0 32 32">
-          <title>icon-heart</title>
-        </symbol>
-        <symbol id="icon-infinity" viewBox="0 0 32 32">
-          <title>icon-infinity</title>
-        </symbol>
-        <symbol id="icon-pause" viewBox="0 0 32 32">
-          <title>icon-pause</title>
-          <path
-            d="M16 0.32c-8.64 0-15.68 7.040-15.68 15.68s7.040 15.68 15.68 15.68 15.68-7.040 15.68-15.68-7.040-15.68-15.68-15.68zM16 29.216c-7.296 0-13.216-5.92-13.216-13.216s5.92-13.216 13.216-13.216 13.216 5.92 13.216 13.216-5.92 13.216-13.216 13.216z"
-          ></path>
-          <path
-            d="M16 32c-8.832 0-16-7.168-16-16s7.168-16 16-16 16 7.168 16 16-7.168 16-16 16zM16 0.672c-8.448 0-15.328 6.88-15.328 15.328s6.88 15.328 15.328 15.328c8.448 0 15.328-6.88 15.328-15.328s-6.88-15.328-15.328-15.328zM16 29.568c-7.488 0-13.568-6.080-13.568-13.568s6.080-13.568 13.568-13.568c7.488 0 13.568 6.080 13.568 13.568s-6.080 13.568-13.568 13.568zM16 3.104c-7.104 0-12.896 5.792-12.896 12.896s5.792 12.896 12.896 12.896c7.104 0 12.896-5.792 12.896-12.896s-5.792-12.896-12.896-12.896z"
-          ></path>
-          <path
-            d="M12.16 22.336v0c-0.896 0-1.6-0.704-1.6-1.6v-9.472c0-0.896 0.704-1.6 1.6-1.6v0c0.896 0 1.6 0.704 1.6 1.6v9.504c0 0.864-0.704 1.568-1.6 1.568z"
-          ></path>
-          <path
-            d="M19.84 22.336v0c-0.896 0-1.6-0.704-1.6-1.6v-9.472c0-0.896 0.704-1.6 1.6-1.6v0c0.896 0 1.6 0.704 1.6 1.6v9.504c0 0.864-0.704 1.568-1.6 1.568z"
-          ></path>
-        </symbol>
-        <symbol id="icon-play" viewBox="0 0 32 32">
-          <title>icon-play</title>
-          <path
-            d="M21.216 15.168l-7.616-5.088c-0.672-0.416-1.504 0.032-1.504 0.832v10.176c0 0.8 0.896 1.248 1.504 0.832l7.616-5.088c0.576-0.416 0.576-1.248 0-1.664z"
-          ></path>
-          <path
-            d="M13.056 22.4c-0.224 0-0.416-0.064-0.608-0.16-0.448-0.224-0.704-0.672-0.704-1.152v-10.176c0-0.48 0.256-0.928 0.672-1.152s0.928-0.224 1.344 0.064l7.616 5.088c0.384 0.256 0.608 0.672 0.608 1.088s-0.224 0.864-0.608 1.088l-7.616 5.088c-0.192 0.16-0.448 0.224-0.704 0.224zM13.056 10.272c-0.096 0-0.224 0.032-0.32 0.064-0.224 0.128-0.352 0.32-0.352 0.576v10.176c0 0.256 0.128 0.48 0.352 0.576 0.224 0.128 0.448 0.096 0.64-0.032l7.616-5.088c0.192-0.128 0.288-0.32 0.288-0.544s-0.096-0.416-0.288-0.544l-7.584-5.088c-0.096-0.064-0.224-0.096-0.352-0.096z"
-          ></path>
-          <path
-            d="M16 0.32c-8.64 0-15.68 7.040-15.68 15.68s7.040 15.68 15.68 15.68 15.68-7.040 15.68-15.68-7.040-15.68-15.68-15.68zM16 29.216c-7.296 0-13.216-5.92-13.216-13.216s5.92-13.216 13.216-13.216 13.216 5.92 13.216 13.216-5.92 13.216-13.216 13.216z"
-          ></path>
-          <path
-            d="M16 32c-8.832 0-16-7.168-16-16s7.168-16 16-16 16 7.168 16 16-7.168 16-16 16zM16 0.672c-8.448 0-15.328 6.88-15.328 15.328s6.88 15.328 15.328 15.328c8.448 0 15.328-6.88 15.328-15.328s-6.88-15.328-15.328-15.328zM16 29.568c-7.488 0-13.568-6.080-13.568-13.568s6.080-13.568 13.568-13.568c7.488 0 13.568 6.080 13.568 13.568s-6.080 13.568-13.568 13.568zM16 3.104c-7.104 0-12.896 5.792-12.896 12.896s5.792 12.896 12.896 12.896c7.104 0 12.896-5.792 12.896-12.896s-5.792-12.896-12.896-12.896z"
-          ></path>
-        </symbol>
-        <symbol id="icon-link" viewBox="0 0 48 48">
-          <title>link</title>
-          <g xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd">
-            <path d="M0 48h48V0H0v48zm3.2-3.2h41.6V3.2H3.2v41.6z" />
-            <path
-              d="M9.6 9.6v28.8h28.8zM36.137 29.965L18.035 11.863 20.298 9.6 38.4 27.702zM36.137 20.914l-9.05-9.05 2.262-2.265 9.05 9.052z"
-            />
-          </g>
-        </symbol>
-        <symbol id="icon-next" viewBox="0 0 15 15">
-          <title>next</title>
-          <path
-            xmlns="http://www.w3.org/2000/svg"
-            d="M13 5h3v10h-3V5zM4 5l9 5-9 5V5z"
-          />
-        </symbol>
-        <symbol id="icon-prev" viewBox="0 0 15 15">
-          <title>prev</title>
-          <path
-            xmlns="http://www.w3.org/2000/svg"
-            d="M4 5h3v10H4V5zm12 0v10l-9-5 9-5z"
-          />
-        </symbol>
-      </defs>
-    </svg>
   </div>
 </template>
 
@@ -602,10 +560,6 @@ export default {
 </script>
 
 <style scoped>
-svg {
-  display: none;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -760,8 +714,8 @@ svg {
   margin-bottom: 10px;
   color: inherit;
   cursor: pointer;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -792,8 +746,9 @@ svg {
   transition: all 0.4s cubic-bezier(0.35, 0.57, 0.13, 0.88);
 }
 @media screen and (min-width: 500px) {
-  .player-controls__item:hover {
-    color: #532ab9;
+  .player-controls__item:hover,
+  .player-controls__item.icon:hover {
+    color: #3423e1;
   }
   .player-controls__item:hover::before {
     opacity: 1;
@@ -802,7 +757,7 @@ svg {
 }
 @media screen and (max-width: 576px), (max-height: 500px) {
   .player-controls__item:active {
-    color: #532ab9;
+    color: #3423e1;
   }
   .player-controls__item:active::before {
     opacity: 1;
@@ -813,14 +768,30 @@ svg {
   position: relative;
   z-index: 2;
 }
+
+.player-controls__item .icon-play {
+  position: relative;
+  z-index: 2;
+}
+
+.player-controls__item svg.icon {
+  width: 100%;
+  height: 100%;
+}
+
+.player-controls__item svg.icon-play {
+  width: 100px;
+  height: 100px;
+  overflow: visible;
+}
 .player-controls__item.-xl {
   margin-bottom: 0;
-  font-size: 95px;
   filter: drop-shadow(0 11px 6px rgba(12, 12, 12, 0.6));
   color: #fff;
-  width: auto;
-  height: auto;
-  display: inline-flex;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  padding: 4px;
 }
 @media screen and (max-width: 576px), (max-height: 500px) {
   .player-controls__item.-xl {
@@ -843,6 +814,7 @@ svg {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  padding-top: 1rem;
 }
 .progress__duration {
   color: var(--dark-text);
@@ -944,6 +916,7 @@ svg {
 
 .episode-guide {
   display: flex;
+  flex-wrap: wrap;
   margin: 1rem auto;
   justify-content: center;
 }
@@ -951,7 +924,8 @@ svg {
 .podcast-list-container {
   box-sizing: border-box;
   background-color: var(--primary-color);
-  width: 40%;
+  max-width: 40%;
+  min-width: 400px;
   height: 700px;
   padding: 1rem;
   box-shadow: 0px 15px 35px -5px rgba(12, 12, 12, 0.75);
@@ -1012,7 +986,7 @@ svg {
 }
 
 .podcast-list li:hover {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .podcast-list .active {
