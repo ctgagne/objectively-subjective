@@ -58,7 +58,6 @@ export default {
   display: flex;
   max-width: 1440px;
   margin: 0 auto;
-  margin-top: -2.5rem;
 }
 .title {
   font-weight: bold;

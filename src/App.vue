@@ -39,7 +39,7 @@ export default {
 }
 body {
   background-color: #cf6f33;
-  margin: 0 auto;
+  margin: 0;
 }
 
 #app {

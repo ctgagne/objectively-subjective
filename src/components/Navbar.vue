@@ -84,10 +84,9 @@ export default {
 <style scoped>
 .nav {
   display: flex;
-  position: relative;
   min-height: 150px;
-  height: max-content;
   justify-content: center;
+  width: 100vw;
   background-image: url("~@/assets/navbarsvg.svg");
   background-size: 100vw;
 }

@@ -573,9 +573,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-  box-sizing: border-box;
-}
 .icon {
   display: inline-block;
   width: 1em;
@@ -929,6 +926,7 @@ export default {
 .episode-guide {
   display: flex;
   flex-wrap: wrap;
+  max-width: 1440px;
   margin: 0 auto;
   padding-top: 3rem;
   justify-content: center;
@@ -939,7 +937,7 @@ export default {
 .podcast-list-container {
   box-sizing: border-box;
   background-color: var(--primary-color);
-  max-width: 45%;
+  max-width: 55%;
   min-width: 320px;
   height: 600px;
   padding: 1rem;
