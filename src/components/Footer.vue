@@ -112,4 +112,11 @@ a {
 .google img {
   height: 40px;
 }
+
+@media (max-width: 320px) {
+  .google,
+  .apple {
+    margin-left: 0;
+  }
+}
 </style>

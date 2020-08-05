@@ -596,6 +596,9 @@ export default {
   .wrapper {
     flex-wrap: wrap;
     flex-direction: column;
+    margin: -3rem 1rem 0;
+    padding: 0;
+    justify-self: center;
   }
 }
 .player {
@@ -609,7 +612,26 @@ export default {
 @media screen and (max-width: 576px), (max-height: 500px) {
   .player {
     width: 95%;
+    padding: 10px;
+    margin-top: 75px;
+    min-height: initial;
+    padding-bottom: 30px;
+    max-width: 400px;
+  }
+}
+
+@media screen and (max-width: 320px), (max-height: 500px) {
+  .wrapper {
+    padding: 0;
+    margin: 0 auto;
+    margin-top: -3rem;
+    width: 95%;
+  }
+  .player {
+    width: 85%;
     padding: 20px;
+    margin-bottom: 5px;
+
     margin-top: 75px;
     min-height: initial;
     padding-bottom: 30px;
@@ -646,12 +668,16 @@ export default {
 }
 @media screen and (max-width: 576px), (max-height: 500px) {
   .player-cover {
-    margin-top: -70px;
+    margin: -70px auto 25px auto;
     margin-bottom: 25px;
-    width: 290px;
+    width: 230px;
     height: 230px;
-    margin-left: auto;
-    margin-right: 25px;
+    object-fit: cover;
+    overflow: hidden;
+    place-content: center;
+  }
+  .player-cover img {
+    height: 100%;
   }
 }
 .player-cover__item {
@@ -934,6 +960,12 @@ export default {
   min-height: 100%;
 }
 
+@media screen and (max-width: 320px) {
+  .episode-guide {
+    padding-bottom: 120px;
+  }
+}
+
 .podcast-list-container {
   box-sizing: border-box;
   background-color: var(--primary-color);
@@ -946,12 +978,6 @@ export default {
 }
 
 @media (max-width: 857px) {
-  .wrapper {
-    margin: 0 1rem;
-    margin: -3rem 0 0 1rem;
-    padding: 0;
-    justify-self: center;
-  }
   .podcast-list-container {
     margin: 0 auto;
     margin-bottom: 88px;

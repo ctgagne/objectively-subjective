@@ -240,12 +240,26 @@ iframe {
     font-size: 1rem;
   }
   .player {
-    margin: 0 auto;
     padding: 1rem 0;
   }
   iframe {
     margin: 0 auto;
     padding: 0;
+  }
+}
+
+@media (max-width: 320px) {
+  .home img {
+    margin: auto;
+    max-width: 275px;
+    max-height: 275px;
+    padding: 0;
+  }
+  .home-text {
+    padding: 0;
+  }
+  .home {
+    padding-bottom: 200px;
   }
 }
 </style>
