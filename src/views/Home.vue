@@ -8,8 +8,16 @@
           our <span class="highlight">subjective </span><br /><u>Top 5 lists</u>
         </h1>
         <div class="buttons">
-          <div class="button">Subscribe</div>
-          <div class="button">Episode Guide</div>
+          <a
+            href="https://podcasts.apple.com/us/podcast/objectively-subjective/id1500505183?mt=2&app=podcast"
+            ><div class="button-1">Subscribe</div></a
+          >
+          <router-link to="/episodes"
+            ><div class="button">Episode Guide</div></router-link
+          >
+        </div>
+        <div class="listen">
+          <p>Or listen to our most recent episode below!</p>
         </div>
       </div>
       <div class="image-container">
@@ -17,16 +25,13 @@
       </div>
     </div>
     <div class="player">
-      <div class="listen">
-        <p>Listen to our most recent episode!</p>
-      </div>
       <iframe
         height="150px"
         width="95%"
         frameborder="no"
         scrolling="no"
         seamless
-        src="https://player.simplecast.com/3ecc67bc-fafa-465b-b39a-f2be91ef8ac7?dark=true"
+        src="https://player.simplecast.com/5d6e6eda-eaee-4a3e-bc55-eb56ba98b0ba?dark=true"
       ></iframe>
     </div>
   </div>
@@ -39,6 +44,16 @@ export default {
 </script>
 
 <style scoped>
+.home {
+  padding-bottom: 88px;
+  min-height: 100%;
+}
+
+@media (max-width: 900px) {
+  .home {
+    padding-bottom: 100px;
+  }
+}
 .main-section {
   display: flex;
   max-width: 1440px;
@@ -70,7 +85,8 @@ h1 {
   display: flex;
 }
 
-.button {
+.button,
+.button-1 {
   cursor: pointer;
   width: max-content;
   padding: 0.5rem 1rem;
@@ -86,7 +102,22 @@ h1 {
   transition: all 300ms ease;
 }
 
-.button:hover {
+.button-1 {
+  background-color: var(--dark-text);
+  color: var(--light-text);
+  border: 1px solid var(--dark-text);
+}
+
+a {
+  text-decoration: none;
+}
+.listen {
+  text-align: left;
+  padding-left: 1.3rem;
+}
+
+.button:hover,
+.button-1:hover {
   transform: translateX(5px) translateY(-5px);
   box-shadow: -5px 14px 8px rgba(0, 0, 0, 0.7);
 }
@@ -113,7 +144,6 @@ h1 {
   max-width: 1440px;
   margin: 0 auto;
   padding: 1rem;
-  margin-top: -2.5rem;
 }
 
 .player p {
@@ -176,19 +206,33 @@ iframe {
     max-width: 350px;
     max-height: 350px;
   }
+  .home {
+    padding-bottom: 150px;
+    min-height: 100%;
+  }
   .buttons {
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
   }
-  .button {
-    min-width: 175px;
-    margin: auto;
-    font-size: 1.5rem;
+  .listen {
+    padding-left: 1rem;
   }
-  .buttons :nth-child(2) {
-    margin-top: 1rem;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .button,
+  .button-1 {
+    width: 70vw;
+    margin: 0 auto;
+  }
+
+  .button {
+    margin-top: 0.5rem;
   }
   h1 {
     font-size: 2.8rem;

@@ -1,6 +1,6 @@
 <template>
   <div class="episode-guide">
-    <div class="wrapper" id="app">
+    <div class="wrapper">
       <div class="player">
         <div class="player__top">
           <div class="player-cover">
@@ -93,7 +93,7 @@
           d="M16 17a3 3 0 0 1-3 3h-2a3 3 0 0 1 0-6h2a3 3 0 0 1 1 .17V1l6-1v4l-4 .67V17zM0 3h12v2H0V3zm0 4h12v2H0V7zm0 4h12v2H0v-2zm0 4h6v2H0v-2z"
         />
       </svg> -->
-      Playlist
+      <h3>Episode Guide</h3>
       <ul class="podcast-list">
         <li
           v-for="(track, index) in tracks"
@@ -133,6 +133,19 @@ export default {
       isTimerPlaying: false,
       tracks: [
         {
+          name: "Top 5 Marvel Heroes",
+          artist: "Objectively Subjective",
+          source:
+            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/5d6e6eda-eaee-4a3e-bc55-eb56ba98b0ba/23-top-5-marvel-heroes_tc.mp3",
+          url:
+            "https://objectively-subjective.simplecast.com/episodes/top-5-marvel-heroes",
+          favorited: false,
+          number: "23",
+          synop:
+            "This week we dive in to our favorite heroes from the Marvel Universe. EXCELSIOR!",
+          date: "Aug 5, 2020"
+        },
+        {
           name: "Top 5 Fast Food Chains",
           artist: "Objectively Subjective",
           source:
@@ -143,7 +156,7 @@ export default {
           number: "22",
           synop:
             "Listen to us discuss our favorite greasy, tummy troubling, fast food chains!",
-          date: "July 29, 2020"
+          date: "Jul 29, 2020"
         },
         {
           name: "Top 5 DC Heroes (ft. Dustin Elkins)",
@@ -156,7 +169,7 @@ export default {
           number: "21",
           synop:
             "Listen this week as we are joined by Dustin Elkins, aka sonicdoom_ from Twitch, to talk about our favorite dogooders or sometimes dogooders from the DC Universe!",
-          date: "July 22, 2020"
+          date: "Jul 22, 2020"
         },
         {
           name: "Top 5 Godzillas (ft. Milo Jansen)",
@@ -169,7 +182,7 @@ export default {
           number: "20",
           synop:
             "Listen this week as Paul asks his son, Milo, all about his favorite versions of Godzilla!",
-          date: "July 15, 2020"
+          date: "Jul 15, 2020"
         },
         {
           name: "Top 5 Marvel Villains",
@@ -182,7 +195,7 @@ export default {
           number: "19",
           synop:
             "Listen this week as we FINALLY complete our Villains Month from April with our top baddies from the Marvel Universe!",
-          date: "July 8, 2020"
+          date: "Jul 8, 2020"
         },
         {
           name: "Top 5 Childhood Toys",
@@ -195,7 +208,7 @@ export default {
           number: "18",
           synop:
             "Listen to our almost 2 hour long toy commercial of all our favorite childhood playthings!",
-          date: "July 1, 2020"
+          date: "Jul 1, 2020"
         },
         {
           name: "Top 5 Sodas",
@@ -207,7 +220,7 @@ export default {
           favorited: false,
           number: "17",
           synop: "Listen to us talk about our favorite bubbly beverages!",
-          date: "June 24, 2020"
+          date: "Jun 24, 2020"
         },
         {
           name: "Top 5 Candy Bars",
@@ -219,7 +232,7 @@ export default {
           favorited: false,
           number: "16",
           synop: "Listen to us talk about our favorite chocolatey confections!",
-          date: "June 17, 2020"
+          date: "Jun 17, 2020"
         },
         {
           name: "Top 5 Cereals",
@@ -232,7 +245,7 @@ export default {
           number: "15",
           synop:
             "Listen as we go back to Saturday mornings, watching cartoons, and we tell you what our favorite cereals of all time are!",
-          date: "June 10, 2020"
+          date: "Jun 10, 2020"
         },
         {
           name: "Top 10 Cartoon Theme Songs (Part 2)",
@@ -245,7 +258,7 @@ export default {
           number: "14",
           synop:
             "The finale of our two part list about of favorite cartoon theme songs! Come listen to see what will be our number 1!",
-          date: "June 3, 2020"
+          date: "Jun 3, 2020"
         },
         {
           name: "Top 10 Cartoon Theme Songs (Part 1)",
@@ -297,7 +310,7 @@ export default {
           number: "10",
           synop:
             "In a very special episode, Paul brought his wife, Stephanie, in to do a special episode together for their anniversary! So in Blake's absence, here are Paul and Stephanie's favorite Disney Sidekicks!",
-          date: "April 29, 2020"
+          date: "Apr 29, 2020"
         },
         {
           name: "Top 5 DC Villains",
@@ -310,7 +323,7 @@ export default {
           number: "9",
           synop:
             "This is our first episode not done in the same room. Come enjoy our first quarantined episode about our favorite villains from the DC Universe!",
-          date: "April 22, 2020"
+          date: "Apr 22, 2020"
         },
         {
           name: "Top 5 Disney Villains (Fan Pick)",
@@ -323,7 +336,7 @@ export default {
           number: "8",
           synop:
             "It's time for our second ever Fan Pick episode! Disney Villains won this month's themed poll. See which villain from the magical world of Disney is our favorite!",
-          date: "April 15, 2020"
+          date: "Apr 15, 2020"
         },
         {
           name: "Top 5 Video Game Villains",
@@ -336,7 +349,7 @@ export default {
           number: "7",
           synop:
             "This is our first episode of our Villains series we are running in April 2020! Listen to find out which video game baddie is our favorite!",
-          date: "April 8, 2020"
+          date: "Apr 8, 2020"
         },
         {
           name: "Top 5 Wrestling Finishers",
@@ -349,7 +362,7 @@ export default {
           number: "6",
           synop:
             "With the empty arena Wrestlemania approaching, we have decided we would should take a dive into the Wrestling category in this week's list!",
-          date: "April 1, 2020"
+          date: "Apr 1, 2020"
         },
         {
           name: "Top 5 Nintendo Characters (Fan Pick)",
@@ -362,7 +375,7 @@ export default {
           number: "5",
           synop:
             "This is our first ever Fan Pick episode! This week we will be doing the poll winner Top 5 Nintendo Characters!",
-          date: "March 25, 2020"
+          date: "Mar 25, 2020"
         },
         {
           name: "Top 5 Voice Actors",
@@ -375,7 +388,7 @@ export default {
           number: "4",
           synop:
             "Voice Actors are a massive part of the film & TV industry, and an often overlooked part. We wanted to give them well deserved attention with this week's list!",
-          date: "March 18, 2020"
+          date: "Mar 18, 2020"
         },
         {
           name: "Top 5 Pixar Movies",
@@ -388,7 +401,7 @@ export default {
           number: "3",
           synop:
             "Pixar is releasing two movies in 2020, Onward and Soul. With Onward's release upcoming, we decided what better time than now to do this list!",
-          date: "March 11, 2020"
+          date: "Mar 11, 2020"
         },
         {
           name: "Top 5 Movies That Are Bad or Bombed",
@@ -401,7 +414,7 @@ export default {
           number: "2",
           synop:
             "This episode is brought about by the unexpected box office disappointment Harley Quinn: Birds of Prey. We dive into into our favorite stinkers and failures.",
-          date: "March 4, 2020"
+          date: "Mar 4, 2020"
         },
         {
           name: "Top 5 Video Game Movies",
@@ -414,7 +427,7 @@ export default {
           number: "1",
           synop:
             "With Sonic the Hedgehog releasing in theaters recently, we thought this would be a great topic for our first ever episode!",
-          date: "March 4, 2020"
+          date: "Feb 26, 2020"
         }
       ],
       currentTrack: null,
@@ -574,11 +587,10 @@ export default {
 .wrapper {
   max-width: 500px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  max-height: 550px;
   min-height: 500px;
-  background-size: cover;
-  margin: 0 -2rem 1rem 1rem;
+  margin: 1rem -2rem 1rem 1rem;
   z-index: 2;
   padding: 1rem;
   padding-left: 3rem;
@@ -642,7 +654,7 @@ export default {
     width: 290px;
     height: 230px;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 25px;
   }
 }
 .player-cover__item {
@@ -917,27 +929,47 @@ export default {
 .episode-guide {
   display: flex;
   flex-wrap: wrap;
-  margin: 1rem auto;
+  margin: 0 auto;
+  padding-top: 3rem;
   justify-content: center;
+  padding-bottom: 88px;
+  min-height: 100%;
 }
 
 .podcast-list-container {
   box-sizing: border-box;
   background-color: var(--primary-color);
-  max-width: 40%;
-  min-width: 400px;
-  height: 700px;
+  max-width: 45%;
+  min-width: 320px;
+  height: 600px;
   padding: 1rem;
   box-shadow: 0px 15px 35px -5px rgba(12, 12, 12, 0.75);
   border-radius: 2rem;
+}
+
+@media (max-width: 857px) {
+  .wrapper {
+    margin: 0 1rem;
+    margin: -3rem 0 0 1rem;
+    padding: 0;
+    justify-self: center;
+  }
+  .podcast-list-container {
+    margin: 0 auto;
+    margin-bottom: 88px;
+  }
+  .podcast-list-container h3 {
+    display: none;
+  }
 }
 
 .podcast-list {
   list-style-type: none;
   overflow: scroll;
   padding: 0 1rem;
+  margin: 0;
   padding-right: 0;
-  height: 650px;
+  height: 550px;
 }
 
 .podcast-list :first-child {
@@ -991,5 +1023,12 @@ export default {
 
 .podcast-list .active {
   background-color: rgba(0, 0, 0, 0.7);
+}
+
+.podcast-list-container h3 {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding-left: 1.5rem;
+  text-align: left;
 }
 </style>

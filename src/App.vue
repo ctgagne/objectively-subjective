@@ -1,14 +1,19 @@
 <template>
   <div id="app">
     <Navbar />
-    <router-view />
+    <transition name="view">
+      <router-view />
+    </transition>
+    <Footer />
   </div>
 </template>
 <script>
 import Navbar from "@/components/Navbar.vue";
+import Footer from "@/components/Footer.vue";
 export default {
   components: {
-    Navbar
+    Navbar,
+    Footer
   }
 };
 </script>
@@ -33,7 +38,27 @@ export default {
   --accent-dark: #6e3b3b;
 }
 body {
-  margin: 0 auto;
   background-color: #cf6f33;
+  margin: 0 auto;
+}
+
+#app {
+  position: relative;
+  min-height: 100vh;
+}
+
+.view-enter-active,
+.view-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.view-enter-to,
+.view-leave {
+  transition-delay: 0.5s;
+}
+
+.view-enter,
+.view-leave-to {
+  opacity: 0;
 }
 </style>

@@ -9,7 +9,7 @@
           <router-link to="/episodes">Episodes</router-link>
         </li>
         <li>
-          <router-link to="/about">About</router-link>
+          <a href="https://objectivelysubjective.bigcartel.com/">Shop</a>
         </li>
         <span class="menu-icons">
           <a href="https://www.facebook.com/objectivelysubjectivepodcast/">
@@ -86,6 +86,7 @@ export default {
   display: flex;
   position: relative;
   min-height: 150px;
+  height: max-content;
   justify-content: center;
   background-image: url("~@/assets/navbarsvg.svg");
   background-size: 100vw;
@@ -134,10 +135,12 @@ li {
 }
 
 #menu a {
+  cursor: pointer;
   font-weight: 900;
   color: var(--dark-text);
   text-decoration: none;
   margin: 0;
+  transition: all 0.2s ease;
 }
 #menu a:hover {
   font-weight: bold;
