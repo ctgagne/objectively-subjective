@@ -1,12 +1,6 @@
 <template>
   <div class="footer-container">
     <div class="podcast-buttons">
-      <div class="apple">
-        <a
-          href="https://podcasts.apple.com/us/podcast/objectively-subjective/id1500505183?mt=2&app=podcast"
-          style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-us/badge-lrg.svg?releaseDate=2020-07-29T00:00:00Z&kind=podcast&bubble=podcasts) no-repeat;width:165px;height:40px;"
-        ></a>
-      </div>
       <div class="spotify-button">
         <a
           href="https://open.spotify.com/show/2uu2Xzjdc3Ur2jnwnfhEgF?si=C4sw7sN-SDWSNtynKSqwbQ"
@@ -26,10 +20,16 @@
           </button></a
         >
       </div>
+      <div class="apple">
+        <a
+          href="https://podcasts.apple.com/us/podcast/objectively-subjective/id1500505183?mt=2&app=podcast"
+          style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-us/badge-lrg.svg?releaseDate=2020-07-29T00:00:00Z&kind=podcast&bubble=podcasts) no-repeat;width:165px;height:40px;"
+        ></a>
+      </div>
       <div class="google">
         <a
           href="https://www.google.com/podcasts?feed=aHR0cHM6Ly9mZWVkcy5zaW1wbGVjYXN0LmNvbS95SVhnTExBRg%3D%3D"
-          ><img src="@/assets/EN_Google_Podcasts_Badge_1x.png"
+          ><img src="@/assets/EN_Google_Podcasts_Badge_2x.png"
         /></a>
       </div>
     </div>
@@ -59,11 +59,8 @@ export default {};
   overflow: hidden;
 }
 
+.google,
 .apple {
-  margin-right: 1rem;
-}
-
-.google {
   margin-left: 1rem;
 }
 
@@ -79,12 +76,12 @@ export default {};
 button.spotify {
   display: flex;
   cursor: pointer;
-  background-color: var(--primary-color);
+  background-color: whitesmoke;
   border-inline-start: 1px solid var(--dark-text);
   border-radius: 0.5rem;
   height: 40px;
   place-items: center;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 
 button.spotify:hover {
