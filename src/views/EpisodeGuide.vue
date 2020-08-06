@@ -537,6 +537,7 @@ export default {
         }
       }, 300);
     },
+
     favorite() {
       this.tracks[this.currentTrackIndex].favorited = !this.tracks[
         this.currentTrackIndex
@@ -603,7 +604,7 @@ export default {
 }
 .player {
   background: var(--component-color);
-  width: 410px;
+  width: 380px;
   min-height: 480px;
   box-shadow: 0px 15px 35px -5px rgba(12, 12, 12, 0.75);
   border-radius: 15px;
@@ -729,7 +730,7 @@ export default {
 
 .player-controls {
   flex: 0;
-  padding-left: 20px;
+  padding-left: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -737,7 +738,7 @@ export default {
 @media screen and (max-width: 576px), (max-height: 500px) {
   .player-controls {
     flex-direction: row;
-    padding-left: 0;
+    padding-left: 20px;
     width: 100%;
     flex: unset;
   }
@@ -830,9 +831,9 @@ export default {
 }
 @media screen and (max-width: 576px), (max-height: 500px) {
   .player-controls__item.-xl {
-    margin-left: auto;
+    margin-left: 1rem;
     font-size: 75px;
-    margin-right: 0;
+    margin-right: auto;
   }
 }
 .player-controls__item.-xl:before {
