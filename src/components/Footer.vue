@@ -69,19 +69,16 @@ export default {};
   opacity: 0.8;
 }
 
-.spotify-button {
-  padding: 0;
-}
-
 button.spotify {
   display: flex;
   cursor: pointer;
   background-color: whitesmoke;
-  border-inline-start: 1px solid var(--dark-text);
+  border: none;
   border-radius: 0.5rem;
   height: 40px;
   place-items: center;
   margin-bottom: 4px;
+  padding: 0.5rem 0.9rem;
 }
 
 button.spotify:hover {
@@ -89,7 +86,7 @@ button.spotify:hover {
 }
 
 button svg {
-  padding: 2px;
+  padding-right: 4px;
 }
 
 a {
