@@ -77,6 +77,8 @@ button.spotify {
   border-radius: 0.5rem;
   height: 40px;
   place-items: center;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 4px;
   padding: 0.5rem 0.9rem;
 }
