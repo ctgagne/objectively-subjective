@@ -2,7 +2,9 @@
   <div id="app">
     <Navbar />
     <transition name="view">
-      <router-view />
+      <keep-alive>
+        <router-view />
+      </keep-alive>
     </transition>
     <Footer />
   </div>
