@@ -86,7 +86,7 @@ export default {
   display: flex;
   min-height: 150px;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   background-image: url("~@/assets/navbarsvg.svg");
   background-size: 100vw;
 }

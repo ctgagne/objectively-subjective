@@ -27,6 +27,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #0c0e0d;
+  margin: 0 auto;
 }
 
 :root {
@@ -41,7 +42,7 @@ export default {
 }
 body {
   background-color: #cf6f33;
-  margin: 0;
+  margin: 0 auto;
 }
 
 #app {
