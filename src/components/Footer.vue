@@ -90,12 +90,12 @@ button.spotify:hover {
 }
 
 .spotify span {
-  padding-top: 4px;
+  padding-top: 6px;
 }
 
 button svg {
-  width: 20px;
-  padding-right: 4px;
+  width: 25px;
+  padding-right: 5px;
 }
 
 a {
