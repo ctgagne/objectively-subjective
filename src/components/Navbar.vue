@@ -83,13 +83,18 @@ export default {
 
 <style scoped>
 .nav {
+  box-sizing: border-box;
   display: flex;
   min-height: 150px;
   justify-content: center;
   width: 100vw;
   background-image: url("~@/assets/navbarsvg.svg");
-  background-size: 100vw;
-  overflow: ;
+  background-size: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
 }
 
 .nav ul {

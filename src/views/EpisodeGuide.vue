@@ -955,8 +955,8 @@ export default {
   flex-wrap: wrap;
   max-width: 1440px;
   margin: 0 auto;
-  padding-top: 3rem;
   justify-content: center;
+  padding-top: 200px;
   padding-bottom: 88px;
   min-height: 100%;
 }

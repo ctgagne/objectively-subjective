@@ -56,7 +56,6 @@ export default {};
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  overflow: hidden;
 }
 
 .google,

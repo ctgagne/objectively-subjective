@@ -43,6 +43,8 @@ export default {
 body {
   background-color: #cf6f33;
   margin: 0 auto;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 #app {

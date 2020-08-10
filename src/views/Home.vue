@@ -45,6 +45,7 @@ export default {
 
 <style scoped>
 .home {
+  padding-top: 150px;
   padding-bottom: 88px;
   min-height: 100%;
 }
