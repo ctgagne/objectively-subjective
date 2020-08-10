@@ -47,7 +47,7 @@ export default {};
 .footer-container {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 100vw;
   min-height: 65px;
   padding: auto;
   margin-top: 1rem;

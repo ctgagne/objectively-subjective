@@ -86,9 +86,10 @@ export default {
   display: flex;
   min-height: 150px;
   justify-content: center;
-  width: 100%;
+  width: 100vw;
   background-image: url("~@/assets/navbarsvg.svg");
   background-size: 100vw;
+  overflow: ;
 }
 
 .nav ul {
