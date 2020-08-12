@@ -85,10 +85,11 @@ export default {
 .nav {
   box-sizing: border-box;
   display: flex;
-  min-height: 150px;
+  min-height: 15%;
   justify-content: center;
   width: 100vw;
   background-image: url("~@/assets/navbarsvg.svg");
+  background-repeat: no-repeat;
   background-size: 100%;
   position: fixed;
   top: 0;
