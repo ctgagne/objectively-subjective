@@ -465,15 +465,23 @@ export default {
       let width = (100 / this.audio.duration) * this.audio.currentTime;
       this.barWidth = width + "%";
       this.circleLeft = width + "%";
-      let durmin = Math.floor(this.audio.duration / 60);
-      let dursec = Math.floor(this.audio.duration - durmin * 60);
-      let curmin = Math.floor(this.audio.currentTime / 60);
-      let cursec = Math.floor(this.audio.currentTime - curmin * 60);
+      let durhour = parseInt(this.audio.duration / 3600);
+      let durmin = parseInt((this.audio.duration - durhour * 3600) / 60);
+      let dursec = Math.floor(this.audio.duration % 60);
+      let curhour = parseInt(this.audio.currentTime / 3600);
+      let curmin = parseInt((this.audio.currentTime - curhour * 3600) / 60);
+      let cursec = Math.floor(this.audio.currentTime % 60);
+      if (durhour < 10) {
+        durhour = "0" + durhour;
+      }
       if (durmin < 10) {
         durmin = "0" + durmin;
       }
       if (dursec < 10) {
         dursec = "0" + dursec;
+      }
+      if (curhour < 10) {
+        curhour = "0" + curhour;
       }
       if (curmin < 10) {
         curmin = "0" + curmin;
@@ -481,8 +489,8 @@ export default {
       if (cursec < 10) {
         cursec = "0" + cursec;
       }
-      this.duration = durmin + ":" + dursec;
-      this.currentTime = curmin + ":" + cursec;
+      this.duration = durhour + ":" + durmin + ":" + dursec;
+      this.currentTime = curhour + ":" + curmin + ":" + cursec;
     },
     updateBar(x) {
       let progress = this.$refs.progress;
