@@ -133,6 +133,19 @@ export default {
       isTimerPlaying: false,
       tracks: [
         {
+          name: "Top 5 Anime Openings (ft. Chaz Gagne)",
+          artist: "Objectively Subjective",
+          source:
+            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/8ae92444-6479-4501-886f-302b06da03da/24-top-5-anime-openings-ft-chaz-gagne_tc.mp3",
+          url:
+            "https://objectively-subjective.simplecast.com/episodes/top-5-anime-openings-ft-chaz-gagne",
+          favorited: false,
+          number: "24",
+          synop:
+            "Listen this week as special guest, Chaz Gagne, comes on the show to discuss our weeb status and our favorite Anime OPs!",
+          date: "Aug 12, 2020"
+        },
+        {
           name: "Top 5 Marvel Heroes",
           artist: "Objectively Subjective",
           source:
