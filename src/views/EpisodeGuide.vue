@@ -133,6 +133,20 @@ export default {
       isTimerPlaying: false,
       tracks: [
         {
+          name:
+            "Top 5 Obscure Cartoons (ft. Andrew & Joel from Cartoon Dumpster Dive)",
+          artist: "Objectively Subjective",
+          source:
+            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/e571860f-a36b-4798-8d94-8f4cab5b42e6/25-top-5-obscure-cartoons-ft-cartoon-dd_tc.mp3",
+          url:
+            "https://objectively-subjective.simplecast.com/episodes/top-5-obscure-cartoons-ft-andrew-joel-from-cartoon-dumpster-dive",
+          favorited: false,
+          number: "25",
+          synop:
+            "Listen this week as special guest, Chaz Gagne, comes on the show to discuss our weeb status and our favorite Anime OPs!",
+          date: "Aug 19, 2020"
+        },
+        {
           name: "Top 5 Anime Openings (ft. Chaz Gagne)",
           artist: "Objectively Subjective",
           source:
