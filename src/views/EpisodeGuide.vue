@@ -143,7 +143,7 @@ export default {
           favorited: false,
           number: "25",
           synop:
-            "Listen this week as special guest, Chaz Gagne, comes on the show to discuss our weeb status and our favorite Anime OPs!",
+            "Join us this week as Paul and two guests, Andrew and Joel from the Cartoon Dumpster Dive podcast, dive in to give you their top cartoons of the most random variety!",
           date: "Aug 19, 2020"
         },
         {
