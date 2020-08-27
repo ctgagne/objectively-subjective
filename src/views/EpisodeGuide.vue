@@ -133,6 +133,19 @@ export default {
       isTimerPlaying: false,
       tracks: [
         {
+          name: "Top 5 Sitcoms (Season 1 Finale)",
+          artist: "Objectively Subjective",
+          source:
+            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/c704150f-8307-46a5-8113-f2e2f370fcff/26-top-5-sitcoms_tc.mp3",
+          url:
+            "https://objectively-subjective.simplecast.com/episodes/top-5-sitcoms-season-1-finale",
+          favorited: false,
+          number: "26",
+          synop:
+            "Join us as we wrap up the season discussing our favorite 30 minute comedy delights!",
+          date: "Aug 26, 2020"
+        },
+        {
           name:
             "Top 5 Obscure Cartoons (ft. Andrew & Joel from Cartoon Dumpster Dive)",
           artist: "Objectively Subjective",

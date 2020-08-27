@@ -31,7 +31,7 @@
         frameborder="no"
         scrolling="no"
         seamless
-        src="https://player.simplecast.com/e571860f-a36b-4798-8d94-8f4cab5b42e6?dark=true"
+        src="https://player.simplecast.com/c704150f-8307-46a5-8113-f2e2f370fcff?dark=true"
       ></iframe>
     </div>
   </div>
