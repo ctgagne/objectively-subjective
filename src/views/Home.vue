@@ -31,15 +31,27 @@
         frameborder="no"
         scrolling="no"
         seamless
-        src="https://player.simplecast.com/c704150f-8307-46a5-8113-f2e2f370fcff?dark=true"
+        src="https://player.simplecast.com/f7581cc8-e208-4283-af57-607d212ed27c?dark=true"
       ></iframe>
     </div>
   </div>
 </template>
 
 <script>
+import { getTracks } from "@/services/track-service.js";
 export default {
-  name: "Home"
+  name: "Home",
+  data() {
+    return {
+      tracks: [],
+      premierTrack: "",
+      sourceTrack:
+        "https://player.simplecast.com/" + this.premierTrack + "?dark=true"
+    };
+  },
+  async created() {
+    this.tracks = (await getTracks()).data.collection;
+  }
 };
 </script>
 

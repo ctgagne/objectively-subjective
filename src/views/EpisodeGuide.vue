@@ -8,7 +8,7 @@
           </div>
           <div class="player-controls">
             <a
-              :href="currentTrack.href"
+              href="https://objectively-subjective.simplecast.com/"
               target="_blank"
               class="player-controls__item"
             >
@@ -79,7 +79,10 @@
                 {{ currentTrack.title }}
               </div>
             </div>
-            <div class="progress__duration">{{ duration }}</div>
+            <div class="progress__duration" v-if="duration != 'NaN:NaN:NaN'">
+              {{ duration }}
+            </div>
+            <div class="lds-dual-ring" v-else></div>
           </div>
           <div class="progress__bar" @click="clickProgress">
             <div class="progress__current" :style="{ width: barWidth }"></div>
@@ -90,11 +93,6 @@
     </div>
     <!-- Podcast List -->
     <div class="podcast-list-container">
-      <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-        <path
-          d="M16 17a3 3 0 0 1-3 3h-2a3 3 0 0 1 0-6h2a3 3 0 0 1 1 .17V1l6-1v4l-4 .67V17zM0 3h12v2H0V3zm0 4h12v2H0V7zm0 4h12v2H0v-2zm0 4h6v2H0v-2z"
-        />
-      </svg> -->
       <h3>Episode Guide</h3>
       <ul class="podcast-list">
         <li
@@ -110,7 +108,7 @@
           <div class="track-info">
             Episode {{ track.number }} | {{ track.title }}
             <span class="publish-date">
-              {{ track.updated_at }}
+              {{ track.updated_at | moment }}
             </span>
           </div>
           <div class="track-synop">
@@ -123,6 +121,7 @@
 </template>
 
 <script>
+import moment from "moment";
 import { getTracks } from "@/services/track-service.js";
 export default {
   data() {
@@ -267,6 +266,11 @@ export default {
       vm.nextTrack();
       this.isTimerPlaying = true;
     };
+  },
+  filters: {
+    moment: function(date) {
+      return moment(date).format("L");
+    }
   }
 };
 </script>
@@ -548,7 +552,6 @@ export default {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  padding-top: 1rem;
 }
 .progress__duration {
   color: var(--dark-text);
@@ -753,5 +756,30 @@ export default {
   margin: 0;
   padding-left: 1.5rem;
   text-align: left;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 34px;
+  height: 34px;
+  margin-top: 16px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: var(--dark-text) transparent var(--dark-text) transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
