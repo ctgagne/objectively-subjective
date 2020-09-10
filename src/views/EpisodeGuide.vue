@@ -8,7 +8,7 @@
           </div>
           <div class="player-controls">
             <a
-              :href="currentTrack.url"
+              :href="currentTrack.href"
               target="_blank"
               class="player-controls__item"
             >
@@ -75,7 +75,9 @@
               <div class="album-info__name">
                 Episode {{ currentTrack.number }}
               </div>
-              <div class="album-info__track">{{ currentTrack.name }}</div>
+              <div class="album-info__track">
+                {{ currentTrack.title }}
+              </div>
             </div>
             <div class="progress__duration">{{ duration }}</div>
           </div>
@@ -106,13 +108,13 @@
           :class="{ active: index == activeIndex }"
         >
           <div class="track-info">
-            Episode {{ track.number }} | {{ track.name }}
+            Episode {{ track.number }} | {{ track.title }}
             <span class="publish-date">
-              {{ track.date }}
+              {{ track.updated_at }}
             </span>
           </div>
           <div class="track-synop">
-            {{ track.synop }}
+            {{ track.description }}
           </div>
         </li>
       </ul>
@@ -121,6 +123,7 @@
 </template>
 
 <script>
+import { getTracks } from "@/services/track-service.js";
 export default {
   data() {
     return {
@@ -131,345 +134,7 @@ export default {
       duration: null,
       currentTime: null,
       isTimerPlaying: false,
-      tracks: [
-        {
-          name: "Top 5 Sitcoms (Season 1 Finale)",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/c704150f-8307-46a5-8113-f2e2f370fcff/26-top-5-sitcoms_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-sitcoms-season-1-finale",
-          favorited: false,
-          number: "26",
-          synop:
-            "Join us as we wrap up the season discussing our favorite 30 minute comedy delights!",
-          date: "Aug 26, 2020"
-        },
-        {
-          name:
-            "Top 5 Obscure Cartoons (ft. Andrew & Joel from Cartoon Dumpster Dive)",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/e571860f-a36b-4798-8d94-8f4cab5b42e6/25-top-5-obscure-cartoons-ft-cartoon-dd_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-obscure-cartoons-ft-andrew-joel-from-cartoon-dumpster-dive",
-          favorited: false,
-          number: "25",
-          synop:
-            "Join us this week as Paul and two guests, Andrew and Joel from the Cartoon Dumpster Dive podcast, dive in to give you their top cartoons of the most random variety!",
-          date: "Aug 19, 2020"
-        },
-        {
-          name: "Top 5 Anime Openings (ft. Chaz Gagne)",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/8ae92444-6479-4501-886f-302b06da03da/24-top-5-anime-openings-ft-chaz-gagne_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-anime-openings-ft-chaz-gagne",
-          favorited: false,
-          number: "24",
-          synop:
-            "Listen this week as special guest, Chaz Gagne, comes on the show to discuss our weeb status and our favorite Anime OPs!",
-          date: "Aug 12, 2020"
-        },
-        {
-          name: "Top 5 Marvel Heroes",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/5d6e6eda-eaee-4a3e-bc55-eb56ba98b0ba/23-top-5-marvel-heroes_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-marvel-heroes",
-          favorited: false,
-          number: "23",
-          synop:
-            "This week we dive in to our favorite heroes from the Marvel Universe. EXCELSIOR!",
-          date: "Aug 5, 2020"
-        },
-        {
-          name: "Top 5 Fast Food Chains",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/3ecc67bc-fafa-465b-b39a-f2be91ef8ac7/22-top-fast-food-chains_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-fast-food-chains",
-          favorited: false,
-          number: "22",
-          synop:
-            "Listen to us discuss our favorite greasy, tummy troubling, fast food chains!",
-          date: "Jul 29, 2020"
-        },
-        {
-          name: "Top 5 DC Heroes (ft. Dustin Elkins)",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/b048daef-0db1-4dc0-869a-867c70b62139/21-top-5-dc-heroes-ft-dustin-elkins_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-dc-heroes-ft-dustin-elkins",
-          favorited: false,
-          number: "21",
-          synop:
-            "Listen this week as we are joined by Dustin Elkins, aka sonicdoom_ from Twitch, to talk about our favorite dogooders or sometimes dogooders from the DC Universe!",
-          date: "Jul 22, 2020"
-        },
-        {
-          name: "Top 5 Godzillas (ft. Milo Jansen)",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/9bb2bb33-501f-49d6-b5f3-d2dd758c2408/20-top-5-godzillas-featuring-milo-jansen_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-godzillas-ft-milo-jansen",
-          favorited: false,
-          number: "20",
-          synop:
-            "Listen this week as Paul asks his son, Milo, all about his favorite versions of Godzilla!",
-          date: "Jul 15, 2020"
-        },
-        {
-          name: "Top 5 Marvel Villains",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/b048daef-0db1-4dc0-869a-867c70b62139/21-top-5-dc-heroes-ft-dustin-elkins_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-marvel-villains",
-          favorited: false,
-          number: "19",
-          synop:
-            "Listen this week as we FINALLY complete our Villains Month from April with our top baddies from the Marvel Universe!",
-          date: "Jul 8, 2020"
-        },
-        {
-          name: "Top 5 Childhood Toys",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/8c880c82-7890-4a8b-a7ea-eb3d8afe38ad/18-top-5-childhood-toys_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-childhood-toys",
-          favorited: false,
-          number: "18",
-          synop:
-            "Listen to our almost 2 hour long toy commercial of all our favorite childhood playthings!",
-          date: "Jul 1, 2020"
-        },
-        {
-          name: "Top 5 Sodas",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/a117dd5c-a7ee-4cb8-a8e8-b134bc27a259/17-top-5-sodas_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-sodas",
-          favorited: false,
-          number: "17",
-          synop: "Listen to us talk about our favorite bubbly beverages!",
-          date: "Jun 24, 2020"
-        },
-        {
-          name: "Top 5 Candy Bars",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/61181ae6-db37-4f2a-9772-1b37b4e5ed6a/16-top-5-candy-bars_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-candy-bars",
-          favorited: false,
-          number: "16",
-          synop: "Listen to us talk about our favorite chocolatey confections!",
-          date: "Jun 17, 2020"
-        },
-        {
-          name: "Top 5 Cereals",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/5040f55f-f64f-4710-baba-8933b133120d/15-top-5-cereals_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-cereals",
-          favorited: false,
-          number: "15",
-          synop:
-            "Listen as we go back to Saturday mornings, watching cartoons, and we tell you what our favorite cereals of all time are!",
-          date: "Jun 10, 2020"
-        },
-        {
-          name: "Top 10 Cartoon Theme Songs (Part 2)",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/81493a73-1212-42d0-92ac-5a399f573800/14-top-10-animated-theme-songs-part-2_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-10-cartoon-theme-songs-part-2",
-          favorited: false,
-          number: "14",
-          synop:
-            "The finale of our two part list about of favorite cartoon theme songs! Come listen to see what will be our number 1!",
-          date: "Jun 3, 2020"
-        },
-        {
-          name: "Top 10 Cartoon Theme Songs (Part 1)",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/d635926d-86c2-4a60-8532-5ed9f86b7d3c/13-top-10-cartoon-theme-songs-part-1_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-10-cartoon-theme-songs-part-1",
-          favorited: false,
-          number: "13",
-          synop:
-            "A list so big we couldn't do it all in one episode! Listen to us dive into our Top 10 cartoon themes starting with our 10 through 6!",
-          date: "May 27, 2020"
-        },
-        {
-          name: "Top 5 TV Theme Songs (Live Action)",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/4999ea1f-6420-406c-91a9-dcd4896ba214/12-top-5-tv-theme-songs-live-action_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-tv-theme-songs-live-action",
-          favorited: false,
-          number: "12",
-          synop:
-            "Listen as we tackle our first music related list! Will your favorite theme make our list?!",
-          date: "May 20, 2020"
-        },
-        {
-          name: "Top 5 Fictional Weapons",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/89bd62a1-a220-4f4b-bf67-372c7ceb03e7/11-top-5-fictional-weapons_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-fictional-weapons",
-          favorited: false,
-          number: "11",
-          synop:
-            "Listen to us talk about our top 5 weapons from all of fictional history, and also go on long tired ramblings.",
-          date: "May 13, 2020"
-        },
-        {
-          name: "Top 5 Disney Sidekicks (ft. Stephanie Jansen)",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/54be1ea8-29d4-4bf0-b4cf-4fc247943312/10-top-5-disney-sidekicks_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-disney-sidekicks-ft-stephanie-jansen",
-          favorited: false,
-          number: "10",
-          synop:
-            "In a very special episode, Paul brought his wife, Stephanie, in to do a special episode together for their anniversary! So in Blake's absence, here are Paul and Stephanie's favorite Disney Sidekicks!",
-          date: "Apr 29, 2020"
-        },
-        {
-          name: "Top 5 DC Villains",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/442caaea-f78e-461f-b0ce-37c678596ea0/9-top-5-dc-villains_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-dc-villains",
-          favorited: false,
-          number: "9",
-          synop:
-            "This is our first episode not done in the same room. Come enjoy our first quarantined episode about our favorite villains from the DC Universe!",
-          date: "Apr 22, 2020"
-        },
-        {
-          name: "Top 5 Disney Villains (Fan Pick)",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/c5898305-8b3a-4c8e-9777-c5eb1007c5e4/8-top-5-disney-villains_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-disney-villains",
-          favorited: false,
-          number: "8",
-          synop:
-            "It's time for our second ever Fan Pick episode! Disney Villains won this month's themed poll. See which villain from the magical world of Disney is our favorite!",
-          date: "Apr 15, 2020"
-        },
-        {
-          name: "Top 5 Video Game Villains",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/43f6197f-9905-4c42-8698-4aa90a23ed3c/7-top-5-video-game-villains_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-video-game-villains",
-          favorited: false,
-          number: "7",
-          synop:
-            "This is our first episode of our Villains series we are running in April 2020! Listen to find out which video game baddie is our favorite!",
-          date: "Apr 8, 2020"
-        },
-        {
-          name: "Top 5 Wrestling Finishers",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/d26099b7-2379-4e35-af17-1bd336592d2e/6-top-5-wrestling-finishers_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-wrestling-finishers",
-          favorited: false,
-          number: "6",
-          synop:
-            "With the empty arena Wrestlemania approaching, we have decided we would should take a dive into the Wrestling category in this week's list!",
-          date: "Apr 1, 2020"
-        },
-        {
-          name: "Top 5 Nintendo Characters (Fan Pick)",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/4a650f08-ff67-4faf-9814-bd51eb8f7531/5-top-5-nintendo-characters-fan-pick_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-nintendo-characters-fan-pick",
-          favorited: false,
-          number: "5",
-          synop:
-            "This is our first ever Fan Pick episode! This week we will be doing the poll winner Top 5 Nintendo Characters!",
-          date: "Mar 25, 2020"
-        },
-        {
-          name: "Top 5 Voice Actors",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/8765503b-c963-4924-905a-98fdc5d0cfa1/4-top-5-voice-actors_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-voice-actors",
-          favorited: false,
-          number: "4",
-          synop:
-            "Voice Actors are a massive part of the film & TV industry, and an often overlooked part. We wanted to give them well deserved attention with this week's list!",
-          date: "Mar 18, 2020"
-        },
-        {
-          name: "Top 5 Pixar Movies",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/09fd760b-df2d-4c64-8bd9-b966d210e755/3-top-5-pixar_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-pixar-movies",
-          favorited: false,
-          number: "3",
-          synop:
-            "Pixar is releasing two movies in 2020, Onward and Soul. With Onward's release upcoming, we decided what better time than now to do this list!",
-          date: "Mar 11, 2020"
-        },
-        {
-          name: "Top 5 Movies That Are Bad or Bombed",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/e19f6386-df2b-4082-8cb8-e05663d37fa5/2-top-5-movies-that-bombed_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-movies-that-are-bad-or-bombed",
-          favorited: false,
-          number: "2",
-          synop:
-            "This episode is brought about by the unexpected box office disappointment Harley Quinn: Birds of Prey. We dive into into our favorite stinkers and failures.",
-          date: "Mar 4, 2020"
-        },
-        {
-          name: "Top 5 Video Game Movies",
-          artist: "Objectively Subjective",
-          source:
-            "https://pdcn.co/e/cdn.simplecast.com/audio/9117dd/9117dd66-1b14-450d-9940-d914eb424107/31c119e0-ce7c-422c-bea8-86a3fd9fa533/top5videogamemovies_tc.mp3",
-          url:
-            "https://objectively-subjective.simplecast.com/episodes/top-5-video-game-movies",
-          favorited: false,
-          number: "1",
-          synop:
-            "With Sonic the Hedgehog releasing in theaters recently, we thought this would be a great topic for our first ever episode!",
-          date: "Feb 26, 2020"
-        }
-      ],
+      tracks: [],
       currentTrack: null,
       currentTrackIndex: 0,
       transitionName: null
@@ -576,7 +241,7 @@ export default {
       this.barWidth = 0;
       this.circleLeft = 0;
       this.audio.currentTime = 0;
-      this.audio.src = this.currentTrack.source;
+      this.audio.src = this.currentTrack.enclosure_url;
       setTimeout(() => {
         if (this.isTimerPlaying) {
           this.audio.play();
@@ -584,19 +249,14 @@ export default {
           this.audio.pause();
         }
       }, 300);
-    },
-
-    favorite() {
-      this.tracks[this.currentTrackIndex].favorited = !this.tracks[
-        this.currentTrackIndex
-      ].favorited;
     }
   },
-  created() {
+  async created() {
+    this.tracks = (await getTracks()).data.collection;
     let vm = this;
     this.currentTrack = this.tracks[0];
     this.audio = new Audio();
-    this.audio.src = this.currentTrack.source;
+    this.audio.src = this.currentTrack.enclosure_url;
     this.audio.ontimeupdate = function() {
       vm.generateTime();
     };
@@ -607,16 +267,6 @@ export default {
       vm.nextTrack();
       this.isTimerPlaying = true;
     };
-
-    // this is optional (for preload covers)
-    for (let index = 0; index < this.tracks.length; index++) {
-      const element = this.tracks[index];
-      let link = document.createElement("link");
-      link.rel = "prefetch";
-      link.href = element.cover;
-      link.as = "image";
-      document.head.appendChild(link);
-    }
   }
 };
 </script>
